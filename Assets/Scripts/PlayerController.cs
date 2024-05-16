@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
 
 	private void HandleJump()
 	{
-		Debug.Log($"isGrounded: {_characterController.isGrounded}");
 		_jumpPressed = Input.GetButtonDown("Jump");
 		if (_jumpPressed && _characterController.isGrounded)
 		{
