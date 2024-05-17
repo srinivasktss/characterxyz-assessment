@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour
 
 	private void HandleMovement()
 	{
-		_horizontal = _characterController.isGrounded ? Input.GetAxis("Horizontal"): 0f;
-		_vertical = _characterController.isGrounded ? Input.GetAxis("Vertical"): 0f;
+		_horizontal = Input.GetAxis("Horizontal");
+		_vertical = Input.GetAxis("Vertical");
 
 		_forward = _characterController.transform.forward;
 		_right = _characterController.transform.right;
