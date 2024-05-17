@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 	[Header("Behaviour References")]
 	[SerializeField] private CharacterController _characterController;
 	[SerializeField] private Transform _followUpCameraTransform;
+	[SerializeField] private Animator _playerAnimator;
 
 	[Space(20)]
 	[Header("Properties")]
@@ -45,13 +46,19 @@ public class PlayerController : MonoBehaviour
 
 	private void HandleMovement()
 	{
-		_horizontal = Input.GetAxis("Horizontal");
-		_vertical = Input.GetAxis("Vertical");
+		_horizontal = _characterController.isGrounded ? Input.GetAxis("Horizontal"): 0f;
+		_vertical = _characterController.isGrounded ? Input.GetAxis("Vertical"): 0f;
 
 		_forward = _characterController.transform.forward;
 		_right = _characterController.transform.right;
 
-		_movementInput = (_forward * _vertical) + (_right * _horizontal) + _jumpVelocity;
+		_movementInput = (_forward * _vertical) + (_right * _horizontal);
+
+		_playerAnimator.SetFloat("MoveX", _horizontal);
+		_playerAnimator.SetFloat("MoveY", _vertical);
+		_playerAnimator.SetFloat("Speed", _movementInput.normalized.magnitude);
+
+		_movementInput += _jumpVelocity;
 
 		_characterController.Move(_movementInput * _moveSpeed * Time.deltaTime);
 	}
@@ -61,6 +68,7 @@ public class PlayerController : MonoBehaviour
 		_jumpPressed = Input.GetButtonDown("Jump");
 		if (_jumpPressed && _characterController.isGrounded)
 		{
+			_playerAnimator.SetTrigger("Jump");
 			_jumpVelocity.y = _jumpSpeed;
 		}
 		else

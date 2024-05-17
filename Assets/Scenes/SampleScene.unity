@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &550985595 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3915082565821610680, guid: 0099e5eb00617e34996b854efb0425f8, type: 3}
+  m_PrefabInstance: {fileID: 1171108486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,9 +453,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 1136609279}
   _followUpCameraTransform: {fileID: 963194228}
+  _playerAnimator: {fileID: 1171108488}
   _moveSpeed: 7
   _rotateSpeed: 90
-  _jumpSpeed: 3
+  _jumpSpeed: 6
   _gravity: -9.81
 --- !u!143 &1136609279
 CharacterController:
@@ -934,3 +940,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2800602913417539097, guid: 0099e5eb00617e34996b854efb0425f8, type: 3}
   m_PrefabInstance: {fileID: 1171108486}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1171108488
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550985595}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: befbcdd3fcbf01948ba0082bffba2bbb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
